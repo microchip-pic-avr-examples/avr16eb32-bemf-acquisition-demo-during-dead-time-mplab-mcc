@@ -71,7 +71,7 @@ void BEMF_Read(void)
 
 ## Analog Comparator MUX Setup
 
-<br><img src="../images/AC_MUX.PNG">
+<br><img src="../images/AC_MUX.png">
 
 ## Application Flowchart
 
@@ -122,15 +122,15 @@ void BEMF_Read(void)
   <br> - Dead-time Insertion Channel 2 Enable: toggle the button (it turns blue if enabled)
   <br> - Requested Dead-time Low Side (μs) : 2
   <br> - Requested Dead-time High Side (μs) : 0.5
-<br><img src="../Images/WEX.png">
+<br><img src="../images/WEX.png">
 
-<br>7. To add the WEX module, go to _Device Resources>Drivers>AC>AC0_, then do the following configuration:
+<br>7. To add the AC module, go to _Device Resources>Drivers>AC>AC0_, then do the following configuration:
 <br><img src="../images/Add_AC.png">
   <br> - Enable: toggle the button (it turns blue if enabled)
   <br> - Positive Input MUX Seection: Positive Pin 5
   <br> - Negative Input MUX Seection: Negative Pin 1
   <br> - Output Pad Enable: toggle the button (it turns blue if enabled)
-<br><img src="../Images/AC.png">
+<br><img src="../images/AC.png">
 
 <br>8. In the **Pin Grid View** tab check if the WEX_WO [0-5] pins are locked as outputs on PORTA. When the boxes from the Enable column in the Output Settings of WEX are checked, the pins are also locked. To change the PORT simply click a pin from another PORT in **Pin Grid View**. Check if PA7 pin is set as AC output. Check if PD4 and PD0 pins are set as inputs for AC. Also, another two pins are needed as inputs for AC for the other two phases of the motor. Click on PD5 and PD6 and set them as inputs from _Pins -> GPIO_. Last, the pins that show the sampled BEMF and the sampling moment must be set as outputs from _Pins -> GPIO_. These pins are PF1, PF2, PF3 and PF4.
 
@@ -152,10 +152,10 @@ void BEMF_Read(void)
  |            PF3           |   digital output      |
  |            PF4           |   digital output      |
 
-<br><img src="../Images/Pin_Grid_View.PNG">
+<br><img src="../images/Pin_Grid_View.PNG">
 
 <br> Go to the _Project Resources>System>Pins_. Select the Digital Input Buffer disabled option for PD5 and PD6 pins.
-<br><img src="../Images/Pin_Manager.png">
+<br><img src="../images/Pin_Manager.png">
 
 <br>9. In the **Project Resources** tab, click the **Generate** button so that MCC will generate all the specified drivers and configurations.
 <br>
