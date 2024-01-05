@@ -87,7 +87,7 @@
         <targetDevice>AVR16EB32</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>nEdbgTool</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.45</languageToolchainVersion>
         <platform>3</platform>
@@ -333,7 +333,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="AVR-Ex_DFP" vendor="Microchip" version="2.7.184"/>
+        <pack name="AVR-Ex_DFP" vendor="Microchip" version="2.8.189"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>

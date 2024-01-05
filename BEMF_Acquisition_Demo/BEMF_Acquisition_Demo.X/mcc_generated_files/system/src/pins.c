@@ -12,7 +12,7 @@
 */
 
 /*
-© [2023] Microchip Technology Inc. and its subsidiaries.
+© [2024] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -40,6 +40,8 @@ static void (*IO_PA2_InterruptHandler)(void);
 static void (*IO_PA3_InterruptHandler)(void);
 static void (*IO_PA4_InterruptHandler)(void);
 static void (*IO_PA5_InterruptHandler)(void);
+static void (*IO_PD0_InterruptHandler)(void);
+static void (*IO_PD4_InterruptHandler)(void);
 static void (*IO_PA7_InterruptHandler)(void);
 static void (*IO_PD5_InterruptHandler)(void);
 static void (*IO_PD6_InterruptHandler)(void);
@@ -79,11 +81,11 @@ void PIN_MANAGER_Initialize()
     PORTC.PIN5CTRL = 0x0;
     PORTC.PIN6CTRL = 0x0;
     PORTC.PIN7CTRL = 0x0;
-    PORTD.PIN0CTRL = 0x0;
+    PORTD.PIN0CTRL = 0x4;
     PORTD.PIN1CTRL = 0x0;
     PORTD.PIN2CTRL = 0x0;
     PORTD.PIN3CTRL = 0x0;
-    PORTD.PIN4CTRL = 0x0;
+    PORTD.PIN4CTRL = 0x4;
     PORTD.PIN5CTRL = 0x4;
     PORTD.PIN6CTRL = 0x4;
     PORTD.PIN7CTRL = 0x0;
@@ -119,6 +121,8 @@ void PIN_MANAGER_Initialize()
     IO_PA3_SetInterruptHandler(IO_PA3_DefaultInterruptHandler);
     IO_PA4_SetInterruptHandler(IO_PA4_DefaultInterruptHandler);
     IO_PA5_SetInterruptHandler(IO_PA5_DefaultInterruptHandler);
+    IO_PD0_SetInterruptHandler(IO_PD0_DefaultInterruptHandler);
+    IO_PD4_SetInterruptHandler(IO_PD4_DefaultInterruptHandler);
     IO_PA7_SetInterruptHandler(IO_PA7_DefaultInterruptHandler);
     IO_PD5_SetInterruptHandler(IO_PD5_DefaultInterruptHandler);
     IO_PD6_SetInterruptHandler(IO_PD6_DefaultInterruptHandler);
@@ -205,6 +209,32 @@ void IO_PA5_DefaultInterruptHandler(void)
 {
     // add your IO_PA5 interrupt custom code
     // or set custom function using IO_PA5_SetInterruptHandler()
+}
+/**
+  Allows selecting an interrupt handler for IO_PD0 at application runtime
+*/
+void IO_PD0_SetInterruptHandler(void (* interruptHandler)(void)) 
+{
+    IO_PD0_InterruptHandler = interruptHandler;
+}
+
+void IO_PD0_DefaultInterruptHandler(void)
+{
+    // add your IO_PD0 interrupt custom code
+    // or set custom function using IO_PD0_SetInterruptHandler()
+}
+/**
+  Allows selecting an interrupt handler for IO_PD4 at application runtime
+*/
+void IO_PD4_SetInterruptHandler(void (* interruptHandler)(void)) 
+{
+    IO_PD4_InterruptHandler = interruptHandler;
+}
+
+void IO_PD4_DefaultInterruptHandler(void)
+{
+    // add your IO_PD4 interrupt custom code
+    // or set custom function using IO_PD4_SetInterruptHandler()
 }
 /**
   Allows selecting an interrupt handler for IO_PA7 at application runtime
@@ -341,6 +371,14 @@ ISR(PORTC_PORT_vect)
 ISR(PORTD_PORT_vect)
 { 
     // Call the interrupt handler for the callback registered at runtime
+    if(VPORTD.INTFLAGS & PORT_INT0_bm)
+    {
+       IO_PD0_InterruptHandler(); 
+    }
+    if(VPORTD.INTFLAGS & PORT_INT4_bm)
+    {
+       IO_PD4_InterruptHandler(); 
+    }
     if(VPORTD.INTFLAGS & PORT_INT5_bm)
     {
        IO_PD5_InterruptHandler(); 

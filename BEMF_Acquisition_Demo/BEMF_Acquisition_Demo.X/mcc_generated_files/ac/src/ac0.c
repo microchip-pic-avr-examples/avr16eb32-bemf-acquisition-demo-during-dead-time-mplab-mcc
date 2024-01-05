@@ -10,7 +10,7 @@
  * @version AC0 Driver Version 1.0.0
 */
 /*
-© [2023] Microchip Technology Inc. and its subsidiaries.
+© [2024] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -30,8 +30,10 @@
     THIS SOFTWARE.
 */
 
-
+#include <util/atomic.h>
 #include "../ac0.h"
+
+static ac_cb_t AC0_cb = NULL;
 
 int8_t AC0_Initialize(void) 
 {
@@ -59,5 +61,35 @@ ISR(AC0_AC_vect)
 
     /* The interrupt flag has to be cleared manually */
     AC0.STATUS = AC_CMPIF_bm;
+    if (AC0_cb != NULL)
+    {
+        AC0_cb();
+    }    
 }
 
+void AC0_MuxSet(uint8_t Mode)
+{
+    uint8_t temp;
+    temp = AC0.MUXCTRL;
+    temp &= ~(AC_MUXPOS_gm | AC_MUXNEG_gm);
+    temp |= Mode;
+    AC0.MUXCTRL = temp;
+}
+
+bool AC0_Read(void)
+{
+    return ((AC0.STATUS & AC_CMPSTATE_bm) != 0 );
+}
+
+void AC0_CallbackRegister(ac_cb_t comparator_cb)
+{
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
+    	{
+    		AC0_cb = comparator_cb;
+	}
+}
+
+void AC0_DACRefValueSet (uint8_t value)
+{ 
+    AC0.DACREF = value;
+}
