@@ -224,12 +224,12 @@
          <hash>b18d593590a8125972833741d32b02c024062cfa095263f82a3cc653a2870883</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\system\src\config_bits.c</file>
-         <hash>7396c5d93c424677e0ee1551c70cc7633803bd9b499056e86eee8d6f2c635b85</hash>
-      </entry>
-      <entry>
          <file>mcc_generated_files\system\src\protected_io.S</file>
          <hash>4b140dbb376219b5a3da75f0eb4d64e14c8baef82193b7b562ad74cfed7d3348</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\system\src\config_bits.c</file>
+         <hash>7396c5d93c424677e0ee1551c70cc7633803bd9b499056e86eee8d6f2c635b85</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\system\protected_io.h</file>
