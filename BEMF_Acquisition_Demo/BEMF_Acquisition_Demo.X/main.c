@@ -44,7 +44,7 @@
 #define RPM_TO_U16(RPM)                     (uint16_t)(((float)(RPM) * 65536.0 * (float)(MOTOR_PAIR_POLES)) / ((float)(F_SAMPLING) * 60.0) + 0.5)
 
 /* Sets the amplitude of the sine wave signals, and thus the scaling values of duty cycle in U.Q.1.15 format, ranging from 0 to 1.00 
- * Duty cycle scaling is done in hardware using the hardware accelerator of TCE.*/
+ * Duty cycle scaling is done in hardware using the hardware accelerator of TCE */
 #define AMP_TO_U16(X)                       (uint16_t)(32768.0*(X) + 0.5)
 
 /* Speed of the motor - 120 RPM */
@@ -88,10 +88,10 @@ static const uint16_t sine_lookup_table[] =
   12403, 12794, 13187, 13582, 13979, 14378, 14778, 15178, 15580, 15981
 };
 
-/* Function that is called every 50us to update the drive */
+/* Function that is called every 50 µs to update the drive */
 void Motor_Drive(void)
 {
-/* Counters that scroll through the LUT at runtime. These counter are used to create the 120 degrees 
+/* Counters that scroll through the LUT at run-time. These counter are used to create the 120 degrees 
  * phase shift between each of the motor's phases */
     static uint16_t     phase_a = DEGREES_TO_U16(0.0);
     static uint16_t     phase_b = DEGREES_TO_U16(120.0);
@@ -115,7 +115,7 @@ void Motor_Drive(void)
     TCE0_CompareChannels012BufferedSet(drive_a, drive_b, drive_c);
 }
 
-/* Functions that switches the MUX to monitor all 3 phases at runtime */
+/* Functions that switches the MUX to monitor all three phases at run-time */
 void Mux_Set(uint8_t mode)
 {
     uint8_t temp;
