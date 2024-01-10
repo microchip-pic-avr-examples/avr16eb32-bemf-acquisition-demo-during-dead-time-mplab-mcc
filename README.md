@@ -31,6 +31,6 @@ More details and code examples on the AVR16EB32 can be found at the following li
 
 ## Setup
 
-The AVR16EB32 Curiosity Nano Development Board is used along with the MPP Power Board, AVR-EB Cnano to MPP Adaptor Board, the BLDC Motor and a Voltage Power Supply.
+The AVR16EB32 Curiosity Nano Development Board is used along with the MPPB, AVR-EB Cnano to MPPB Adaptor Board, the BLDC Motor and a Voltage Power Supply.
 
 <br><img src="images/full_setup.png">

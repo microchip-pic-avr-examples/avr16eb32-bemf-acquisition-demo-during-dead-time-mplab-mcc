@@ -2,7 +2,7 @@
 
 ## BEMF Acquisition Demo
 
-This example shows how to set a Timer/Counter type E (TCE) and a Waveform Extension (WEX) instance to generate six complementary Pulse-Width Modulation (PWM) signals to spin a 3-phase Brushless Direct Current Motor (BLDC) or a Permanent Magnet Synchronous Motor (PMSM) with a Sinusoidal Drive. This example also configures the Analog Comparator (AC) peripheral to measure directly the Back Electromotive Force (BEMF), when the motor is spinning. The measurement window is one of the two dead time periods during a PWM cycle. This dead time period is increased to 2 µs to have a big enough acquisition window to detect clean BEMF, that is not influenced by the PWM driving signals. The other dead time period is kept at 500 ns. A full PWM cycle has 50 µs (which is the classic 20 KHz frequency of MOSFET switching, used in Motor Control applications). The motor is spinning using forced commutation in this example without any sort of synchronization or Closed Loop algorithms. This code example just highlights the new BEMF measurement method during dead time.
+This example shows how to set a Timer/Counter type E (TCE) and a Waveform Extension (WEX) instance to generate six complementary Pulse-Width Modulation (PWM) signals to spin a 3-phase Brushless Direct Current Motor (BLDC) or a Permanent Magnet Synchronous Motor (PMSM) with a Sinusoidal Drive. This example also configures the Analog Comparator (AC) peripheral to measure directly the Back Electromotive Force (BEMF), when the motor is spinning. The measurement window is one of the two dead time periods during a PWM cycle. This dead time period is increased to 2 µs to have a big enough acquisition window to detect clean BEMF, that is not influenced by the PWM driving signals. The other dead time period is kept at 500 ns. A full PWM cycle has 50 µs (which is the classic 20 KHz frequency of MOSFET switching, used in Motor Control applications). The motor is spinning using forced commutation in this example without any sort of synchronization or Closed Loop algorithms. This code example just highlights the new BEMF measurement method during dead time. The motor is spinning at a constant speed and at a constant amplitude that are not modified at run time, because it is not the scope of this application.
 
 ## Related Documentation
 
@@ -29,7 +29,7 @@ More details and code examples on the AVR16EB32 can be found at the following li
 
 ## Setup
 
-The AVR16EB32 Curiosity Nano Development Board is used along with the MPP Power Board, AVR-EB Cnano to MPP Adaptor Board, the BLDC Motor and a Voltage Power Supply.
+The AVR16EB32 Curiosity Nano Development Board is used along with the MPPB, AVR-EB Cnano to MPPB Adaptor Board, the BLDC Motor and a Voltage Power Supply.
 
 <br><img src="../images/full_setup.png">
 
