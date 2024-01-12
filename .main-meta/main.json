@@ -7,7 +7,7 @@
         "version": "1.0.0",
         "displayName": "BEMF Acquisition During Dead Time",
         "projectName": "avr16eb32-bemf-acquisition-demo-during-dead-time-mplab-mcc",
-        "shortDescription": "This repository contains an example of MCC Melody generated source code for the TCE and WEX peripherals of the AVR EB family of devices.",
+        "shortDescription": "This repository contains an example of MCC Melody generated source code for the TCE and WEX peripherals of the AVR EB family of devices. This use case shows a new method to detect and measure Back Electromotive Force (BEMF) in a Motor Control application for Brushless Direct Current Motors (BLDC) or Permanent Magnet Synchronous Motors (PMSM), that are driven with a Sinusoidal Drive.",
         "ide": {
             "name": "MPLAB X",
             "semverRange": ">=6.15.0"
